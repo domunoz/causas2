@@ -2,12 +2,9 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-class VehiculoInline(admin.StackedInline):
-	model = Vehiculo
-
 class DocumentoInline(admin.StackedInline):
-	model = Documento
-	extra = 1
+    model = Documento
+    extra = 1
 
 
 #duda con la carta de cobro
@@ -33,11 +30,31 @@ class DemandaAdmin(admin.ModelAdmin):
 
 
 	# )
-	inlines = [
+    fieldsets = (
+        (None, {
+            'fields': ('numero_de_siniestro', 'ingreso', 'comuna', 'tribunal', 
+            'rol', 'fecha_siniestro',  'notificacion','fecha_comparendo',  'tipo',
+            'conductor', 'patente',  
+            'alcolemia',  'estado'), 
+        }),
+        ('Recupero', {
+            'fields':('fecha_demanda','monto',('factura', 'pagada'), 'carta_de_cobro'),
+
+        }),
+        ('Asegurado', {
+            'fields': ('rut_asegurado', 'nombre_asegurado', 'direccion_asegurado', 
+            'telefono_asegurado', 'correo_asegurado')
+        })
+    )
+
+    list_display = ('numero_de_siniestro', 'rol', 'comuna', 'fecha_comparendo', 'nombre_asegurado')
+    inlines = [
 		DocumentoInline,
 	]
 
-admin.site.register(Tribunal)
-admin.site.register(Asegurado)
-admin.site.register(Demanda, DemandaAdmin)
 
+
+
+
+admin.site.register(Tribunal)
+admin.site.register(Demanda, DemandaAdmin)
