@@ -59,7 +59,8 @@ class DemandaAdmin(admin.ModelAdmin):
 		DocumentoInline,
 	]
 
-
+    list_filter = ('tipo', 'fecha_comparendo')
+    search_fields = ('numero_de_siniestro',)
 
 
 
