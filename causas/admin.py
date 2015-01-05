@@ -39,12 +39,19 @@ class DemandaAdmin(admin.ModelAdmin):
         }),
         ('Recupero', {
             'fields':('fecha_demanda','monto',('factura', 'pagada'), 'carta_de_cobro'),
+            'classes':('collapse',),
 
         }),
         ('Asegurado', {
             'fields': ('rut_asegurado', 'nombre_asegurado', 'direccion_asegurado', 
-            'telefono_asegurado', 'correo_asegurado')
-        })
+            'telefono_asegurado', 'correo_asegurado'),
+            #'classes':('collapse',),
+        
+        }),
+        ('Tercero', {
+            'fields':('rut_tercero', 'nombre_tercero', 'telefono_tercero', 'correo_tercero', 'gestion_de_cobro'),
+            #'classes':('collapse',),
+        }),
     )
 
     list_display = ('numero_de_siniestro', 'rol', 'comuna', 'fecha_comparendo', 'nombre_asegurado')

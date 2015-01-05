@@ -79,6 +79,13 @@ class Demanda(models.Model):
     direccion_asegurado = models.CharField('dirección', max_length=140, null=True, blank=True) 
     correo_asegurado = models.EmailField('correo', max_length=140, null=True, blank=True)
 
+    #tercero 
+    rut_tercero = models.CharField('rut', max_length=140, null=True, blank=True)
+    nombre_tercero = models.CharField('nombre', max_length=140, null=True, blank=True)
+    telefono_tercero = models.CharField('teléfono', max_length=140, null=True, blank=True)
+    correo_tercero = models.EmailField('correo', max_length=140, null=True, blank=True)
+    gestion_de_cobro = models.TextField('gestión de cobro', null=True, blank=True)
+    
 
 
 
